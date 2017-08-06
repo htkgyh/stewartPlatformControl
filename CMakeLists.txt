@@ -11,4 +11,6 @@ src/Raspberry\ Pi/main.cpp
 src/Raspberry\ Pi/angularcontroller.cpp 
 src/Raspberry\ Pi/angularcontroller.h 
 src/Raspberry\ Pi/picaminterface.cpp 
-src/Raspberry\ Pi/picaminterface.h )
+src/Raspberry\ Pi/picaminterface.h
+src/Arduino\ Uno/stewartplatform.cpp 
+src/Arduino\ Uno/stewartplatform.h)
