@@ -27,6 +27,9 @@ StewartPlatform::StewartPlatform(StewartPlatformGeometry& geom)
         alpha0_[i] = alpha0;
     }
     h0_ = h0;
+
+    // Initialise the effective leg lengths
+    calcLegLengths(0,0,h0,0,0,0);
 }
 
 void StewartPlatform::rotate3DVector(float vec[3], const float pitch, const float roll, const float yaw)
@@ -64,8 +67,12 @@ void StewartPlatform::calcLegLengths(const int dx, const int dy, const int dz,
 
 }
 
-void StewartPlatform::calcServoAngles(float alpha[6])
+void StewartPlatform::calcServoAngles(float alpha[6], const int dx, const int dy, const int dz,
+                                      const float pitch, const float roll, const float yaw)
 {
+    // Update effective leg lengths
+    calcLegLengths(dx, dy, dz, pitch, roll, yaw);
+    // Calculate individual servo angles 
     for (int i = 0; i < 6; ++i)
     {
         const float L = l_[i]*l_[i] - s_*s_ + a_*a_;
